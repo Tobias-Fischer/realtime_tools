@@ -5,6 +5,8 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(GNU|Clang)")
   add_compile_options(-Wall -Wextra)
 endif()
 
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
 set(THIS_PACKAGE_INCLUDE_DEPENDS
   rclcpp
   rclcpp_action
