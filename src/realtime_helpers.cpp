@@ -43,25 +43,12 @@ namespace realtime_tools
 {
 bool has_realtime_kernel()
 {
-  std::ifstream realtime_file("/sys/kernel/realtime", std::ios::in);
-  bool has_realtime = false;
-  if (realtime_file.is_open()) {
-    realtime_file >> has_realtime;
-  }
-  return has_realtime;
+  return false;
 }
 
 bool configure_sched_fifo(int priority)
 {
-#ifdef _WIN32
-  HANDLE thread = GetCurrentThread();
-  return SetThreadPriority(thread, priority);
-#else
-  struct sched_param schedp;
-  memset(&schedp, 0, sizeof(schedp));
-  schedp.sched_priority = priority;
-  return !sched_setscheduler(0, SCHED_FIFO, &schedp);
-#endif
+  return false;
 }
 
 bool lock_memory(std::string & message)
